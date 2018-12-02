@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QMediaPlayer>
-#include <QLabel>
 
 #include "loopplayer.h"
 
@@ -26,7 +25,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *audioPlayer;
-    QLabel *videoScreen;
 
     LoopPlayer *videoPlayer;
 

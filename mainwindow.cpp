@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <aubio/aubio.h>
-#include <QBoxLayout>
 
 #include "aubiobeat.h"
 #include "utils.h"
@@ -11,20 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    QWidget *widget = new QWidget;
-    this->setCentralWidget(widget);
-
-    videoScreen = new QLabel();
-
-    QBoxLayout *ctlLayout = new QHBoxLayout;
-
-    QBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(videoScreen);
-    mainLayout->addLayout(ctlLayout);
-
-    widget->setLayout(mainLayout);
-
 
     const auto audioSource = "/Users/shincurry/dev/music-loop-kichiku/test_data/audio3.mp3";
     audioPlayer = new QMediaPlayer;
@@ -62,10 +47,10 @@ void MainWindow::updateLoopPlayerUI(QImage img)
 {
     if (!img.isNull())
     {
-        videoScreen->setAlignment(Qt::AlignCenter);
-        videoScreen->setPixmap(QPixmap::fromImage(img)
+        ui->videoScreen->setAlignment(Qt::AlignCenter);
+        ui->videoScreen->setPixmap(QPixmap::fromImage(img)
                              .scaled(
-                                 videoScreen->size(),
+                                 ui->videoScreen->size(),
                                  Qt::KeepAspectRatio,
                                  Qt::FastTransformation)
                              );
